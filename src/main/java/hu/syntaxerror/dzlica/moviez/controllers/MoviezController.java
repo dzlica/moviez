@@ -44,5 +44,18 @@ public class MoviezController {
         return "moviez";
     }
 
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable long id) {
+        model.addAttribute("editmovie", moviezRepo.findOne(id));
+        return "/edit";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String editPost(@ModelAttribute Moviez moviez) {
+        moviezRepo.save(moviez);
+        return "redirect:/moviez/list";
+    }
+
+
 
 }

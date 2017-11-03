@@ -21,12 +21,14 @@
             <th>Title</th>
             <th>Type</th>
             <th>Watched</th>
+            <th>Edit</th>
         </tr>
         <tr th:each="movie:${moviez}">
             <td th:text="${movie.id}"></td>
             <td th:text="${movie.title}"></td>
             <td th:text="${movie.type}"></td>
             <td th:text="${movie.isWatched()}"></td>
+            <td><a th:href="@{/moviez/{id}/edit(id=${movie.id})}" >Edit</a></td>
         </tr>
     </table>
 
