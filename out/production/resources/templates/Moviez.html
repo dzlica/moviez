@@ -5,6 +5,10 @@
     <title>List of Shows</title>
 </head>
 <body>
+<a th:href="@{/moviez/list}" th:text="'Home'" />
+<p></p>
+<a th:href="@{/moviez/add}" th:text="'Add titles'" />
+<p></p>
     <h1>List of Shows</h1>
     <table>
         <tr>
@@ -13,7 +17,7 @@
             <th>Type</th>
             <th>Watched</th>
         </tr>
-        <tr th:each="movie:${movies}">
+        <tr th:each="movie:${moviez}">
             <td th:text="${movie.id}"></td>
             <td th:text="${movie.title}"></td>
             <td th:text="${movie.type}"></td>
