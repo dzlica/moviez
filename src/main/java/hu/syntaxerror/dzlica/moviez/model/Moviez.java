@@ -12,8 +12,8 @@ public class Moviez {
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
     String title;
-    String type;
     boolean watched;
+    String type;
 
     public Moviez() {
     }
@@ -21,14 +21,21 @@ public class Moviez {
     public Moviez(long id, String title, String type, boolean watched) {
         this.id = id;
         this.title = title;
+        this.watched = watched;
         this.type = type;
+    }
+
+    public Moviez(String title, Type type, boolean watched) {
+        this.title = title;
         this.watched = watched;
     }
 
-    public Moviez(String title, String type, boolean watched) {
-        this.title = title;
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
         this.type = type;
-        this.watched = watched;
     }
 
     public long getId() {
@@ -47,13 +54,6 @@ public class Moviez {
         this.title = title;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public boolean isWatched() {
         return watched;

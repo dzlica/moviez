@@ -9,6 +9,11 @@
 <p></p>
 <a th:href="@{/moviez/add}" th:text="'Add titles'" />
 <p></p>
+<form th:action="@{/moviez/list}" th:object="${search}" method="get">
+    <input type="search" name="search" />
+    <button type="submit" value="Submit">Search</button>
+</form>
+<p></p>
     <h1>List of Shows</h1>
     <table>
         <tr>
