@@ -22,13 +22,13 @@ public class Moviez {
         this.id = id;
         this.title = title;
         this.type = type;
-        this.watched = isWatched();
+        this.watched = watched;
     }
 
     public Moviez(String title, String type, boolean watched) {
         this.title = title;
         this.type = type;
-        this.watched = isWatched();
+        this.watched = watched;
     }
 
     public long getId() {
