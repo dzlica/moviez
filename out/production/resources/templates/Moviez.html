@@ -30,7 +30,8 @@
             <td th:text="${movie.id}"></td>
             <td th:text="${movie.title}"></td>
             <td th:text="${movie.type}"></td>
-            <td th:text="${movie.isWatched()}"></td>
+            <td th:if="${movie.isWatched()}">Yes</td>
+            <td th:unless="${movie.isWatched()}">No</td>
             <td><a th:href="@{/moviez/{id}/edit(id=${movie.id})}" >Edit</a></td>
             <td><a th:href="@{/moviez/{id}/delete(id=${movie.id})}" >Delete</a></td>
         </tr>
