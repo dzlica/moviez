@@ -25,9 +25,10 @@ public class Moviez {
         this.type = type;
     }
 
-    public Moviez(String title, Type type, boolean watched) {
+    public Moviez(String title, String type, boolean watched) {
         this.title = title;
         this.watched = watched;
+        this.type = type;
     }
 
     public String getType() {

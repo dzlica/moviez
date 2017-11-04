@@ -9,6 +9,8 @@
 <p></p>
 <a th:href="@{/moviez/add}" th:text="'Add titles'" />
 <p></p>
+<a th:href="@{/moviez/?isWatched=true}" th:text="'Watched'" />
+<p></p>
 <form th:action="@{/moviez/list}" th:object="${search}" method="get">
     <input type="search" name="search" />
     <button type="submit" value="Submit">Search</button>
@@ -22,6 +24,7 @@
             <th>Type</th>
             <th>Watched</th>
             <th>Edit</th>
+            <th>Delete</th>
         </tr>
         <tr th:each="movie:${moviez}">
             <td th:text="${movie.id}"></td>
@@ -29,6 +32,7 @@
             <td th:text="${movie.type}"></td>
             <td th:text="${movie.isWatched()}"></td>
             <td><a th:href="@{/moviez/{id}/edit(id=${movie.id})}" >Edit</a></td>
+            <td><a th:href="@{/moviez/{id}/delete(id=${movie.id})}" >Delete</a></td>
         </tr>
     </table>
 

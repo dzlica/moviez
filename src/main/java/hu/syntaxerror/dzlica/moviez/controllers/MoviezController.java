@@ -20,20 +20,26 @@ public class MoviezController {
     MoviezRepo moviezRepo;
 
     @RequestMapping({"/", "/list"})
-    public String list(Model model, @RequestParam(required = false) String search) {
-
-        if (search != null) {
-            model.addAttribute("moviez", moviezRepo.findAllByTitleIsLike("%" + search + "%"));;
-        }
-        if (search == null) {
+    public String list(Model model, @RequestParam (required = false) boolean isWatched, @RequestParam(required = false) String search) {
+        if (!isWatched) {
             model.addAttribute("moviez", moviezRepo.findAll());
         }
+        else if (isWatched) {
+            model.addAttribute("moviez", moviezRepo.findAllByWatchedIsTrue());
+        }
+
+        if (search != null) {
+            model.addAttribute("moviez", moviezRepo.findAllByTitleIsLike("%" + search + "%"));
+            model.addAttribute("moviez", moviezRepo.findAllByTypeIsLike("%" + search + "%"));
+        }
+
         return "moviez";
     }
 
     @GetMapping("/add")
     public String addTitle(Model model) {
         model.addAttribute("addtitle", new Moviez());
+        model.addAttribute("types", Type.types);
         return "add";
     }
 
@@ -47,6 +53,7 @@ public class MoviezController {
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable long id) {
         model.addAttribute("editmovie", moviezRepo.findOne(id));
+        model.addAttribute("types", Type.types);
         return "/edit";
     }
 
@@ -56,6 +63,10 @@ public class MoviezController {
         return "redirect:/moviez/list";
     }
 
-
+    @RequestMapping("/{id}/delete")
+    public String delete(@PathVariable long id) {
+        moviezRepo.delete(id);
+        return "redirect:/moviez/list";
+    }
 
 }

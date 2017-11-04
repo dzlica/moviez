@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface MoviezRepo extends CrudRepository<Moviez, Long> {
     List<Moviez> findAllByTitleIsLike(String title);
+    List<Moviez> findAllByTypeIsLike(String type);
+    List<Moviez> findAllByWatchedIsTrue();
 
 }
