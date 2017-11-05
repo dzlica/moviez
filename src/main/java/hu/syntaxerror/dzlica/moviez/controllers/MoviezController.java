@@ -8,10 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-import static com.sun.tools.doclets.formats.html.markup.HtmlStyle.title;
-
 @Controller
 @RequestMapping("/moviez")
 public class MoviezController {
@@ -29,8 +25,7 @@ public class MoviezController {
         }
 
         if (search != null) {
-            model.addAttribute("moviez", moviezRepo.findAllByTitleIsLike("%" + search + "%"));
-            model.addAttribute("moviez", moviezRepo.findAllByTypeIsLike("%" + search + "%"));
+            model.addAttribute("moviez", moviezRepo.findAllByTitleIsLikeOrGenreIsLike("%" + search + "%", "%" + search + "%"));
         }
 
         return "moviez";
@@ -39,6 +34,7 @@ public class MoviezController {
     @GetMapping("/add")
     public String addTitle(Model model) {
         model.addAttribute("addtitle", new Moviez());
+        model.addAttribute("genres", Type.genres);
         model.addAttribute("types", Type.types);
         return "add";
     }
@@ -53,6 +49,7 @@ public class MoviezController {
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable long id) {
         model.addAttribute("editmovie", moviezRepo.findOne(id));
+        model.addAttribute("genres", Type.genres);
         model.addAttribute("types", Type.types);
         return "/edit";
     }

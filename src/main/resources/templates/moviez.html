@@ -21,6 +21,7 @@
         <tr>
             <th>Id</th>
             <th>Title</th>
+            <th>Genre</th>
             <th>Type</th>
             <th>Watched</th>
             <th>Edit</th>
@@ -29,6 +30,7 @@
         <tr th:each="movie:${moviez}">
             <td th:text="${movie.id}"></td>
             <td th:text="${movie.title}"></td>
+            <td th:text="${movie.genre}"></td>
             <td th:text="${movie.type}"></td>
             <td th:if="${movie.isWatched()}">Yes</td>
             <td th:unless="${movie.isWatched()}">No</td>

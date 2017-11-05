@@ -14,21 +14,32 @@ public class Moviez {
     String title;
     boolean watched;
     String type;
+    String genre;
 
     public Moviez() {
     }
 
-    public Moviez(long id, String title, String type, boolean watched) {
+    public Moviez(long id, String title, String type, String genre, boolean watched) {
         this.id = id;
         this.title = title;
         this.watched = watched;
         this.type = type;
+        this.genre = genre;
     }
 
-    public Moviez(String title, String type, boolean watched) {
+    public Moviez(String title, String type, String genre, boolean watched) {
         this.title = title;
         this.watched = watched;
         this.type = type;
+        this.genre = genre;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public String getType() {

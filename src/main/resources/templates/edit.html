@@ -9,6 +9,10 @@
     <input type="hidden" th:field="*{id}" />
     <input type="text" th:field="*{title}" th:value="${title}" />
     <input type="checkbox" th:field="*{watched}" />
+    <select id="genre" name="genre">
+        <option value="NONE">--- Select Type ---</option>
+        <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"></option>
+    </select>
     <select id="type" name="type">
         <option value="NONE">--- Select Type ---</option>
         <option th:each="type : ${types}" th:value="${type}" th:text="${type}"></option>
