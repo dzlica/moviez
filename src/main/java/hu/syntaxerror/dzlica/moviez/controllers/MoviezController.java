@@ -27,7 +27,6 @@ public class MoviezController {
 
     @RequestMapping({"/", "/list"})
     public String list(Model model, @RequestParam (required = false) boolean isWatched, @RequestParam(required = false) String search) {
-        model.addAttribute("date", LocalDateTime.now());
         if (!isWatched) {
             model.addAttribute("moviez", moviezRepo.findAll());
         }
@@ -36,8 +35,9 @@ public class MoviezController {
         }
 
         if (search != null) {
-            model.addAttribute("moviez", moviezRepo.findAllByTitleIsLikeOrGenreIsLike("%" + search + "%", "%" + search + "%"));
+            model.addAttribute("moviez", moviezRepo.findAllByTitleIsLikeOrGenreIsLikeOrTypeIsLike("%" + search + "%", "%" + search + "%", "%" + search + "%"));
         }
+
 
         return "moviez";
     }

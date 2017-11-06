@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface MoviezRepo extends CrudRepository<Moviez, Long> {
-    List<Moviez> findAllByTitleIsLikeOrGenreIsLike(String title, String genre);
+    List<Moviez> findAllByTitleIsLikeOrGenreIsLikeOrTypeIsLike(String title, String genre, String type);
     List<Moviez> findAllByWatchedIsTrue();
 
 }
