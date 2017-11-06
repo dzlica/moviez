@@ -20,6 +20,8 @@
     <table>
         <tr>
             <th>Id</th>
+            <th>Score</th>
+            <th>Likes</th>
             <th>Title</th>
             <th>Genre</th>
             <th>Type</th>
@@ -29,6 +31,9 @@
         </tr>
         <tr th:each="movie:${moviez}">
             <td th:text="${movie.id}"></td>
+            <td th:text="${movie.score}"></td>
+            <td><a th:href="@{'{id}/up'(id=${movie.id})}" >+</a>
+                <a th:href="@{'{id}/down'(id=${movie.id})}">-</a></td>
             <td th:text="${movie.title}"></td>
             <td th:text="${movie.genre}"></td>
             <td th:text="${movie.type}"></td>

@@ -3,10 +3,14 @@ package hu.syntaxerror.dzlica.moviez.controllers;
 import hu.syntaxerror.dzlica.moviez.model.Type;
 import hu.syntaxerror.dzlica.moviez.model.Moviez;
 import hu.syntaxerror.dzlica.moviez.repositories.MoviezRepo;
+import hu.syntaxerror.dzlica.moviez.service.DateProvider;
+import hu.syntaxerror.dzlica.moviez.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 @Controller
 @RequestMapping("/moviez")
@@ -15,8 +19,15 @@ public class MoviezController {
     @Autowired
     MoviezRepo moviezRepo;
 
+    @Autowired
+    DateProvider dateProvider;
+
+    @Autowired
+    VoteService voteService;
+
     @RequestMapping({"/", "/list"})
     public String list(Model model, @RequestParam (required = false) boolean isWatched, @RequestParam(required = false) String search) {
+        model.addAttribute("date", LocalDateTime.now());
         if (!isWatched) {
             model.addAttribute("moviez", moviezRepo.findAll());
         }
@@ -63,6 +74,18 @@ public class MoviezController {
     @RequestMapping("/{id}/delete")
     public String delete(@PathVariable long id) {
         moviezRepo.delete(id);
+        return "redirect:/moviez/list";
+    }
+
+    @GetMapping("/{id}/up")
+    public String up(@PathVariable long id){
+        voteService.upVote(id);
+        return "redirect:/moviez/list";
+    }
+
+    @GetMapping("/{id}/down")
+    public String down(@PathVariable long id){
+        voteService.downVote(id);
         return "redirect:/moviez/list";
     }
 

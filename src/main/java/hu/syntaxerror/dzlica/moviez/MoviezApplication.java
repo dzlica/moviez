@@ -13,7 +13,8 @@ public class MoviezApplication implements CommandLineRunner {
 	@Autowired
     MoviezRepo moviezRepo;
 
-	public static void main(String[] args) {
+
+    public static void main(String[] args) {
 		SpringApplication.run(MoviezApplication.class, args);
 	}
 

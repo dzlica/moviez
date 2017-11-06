@@ -1,9 +1,13 @@
 package hu.syntaxerror.dzlica.moviez.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+
+import java.time.LocalDate;
+import java.util.Date;
+
+import static javax.persistence.TemporalType.DATE;
 
 @Entity
 public class Moviez {
@@ -15,8 +19,16 @@ public class Moviez {
     boolean watched;
     String type;
     String genre;
+    int score;
+
+    LocalDate date;
+    LocalDate duedate;
 
     public Moviez() {
+    }
+
+    public Moviez(String title, LocalDate date) {
+
     }
 
     public Moviez(long id, String title, String type, String genre, boolean watched) {
@@ -27,11 +39,38 @@ public class Moviez {
         this.genre = genre;
     }
 
-    public Moviez(String title, String type, String genre, boolean watched) {
+    public Moviez(String title, String type, String genre, boolean watched, LocalDate date, LocalDate duedate, int score) {
         this.title = title;
         this.watched = watched;
         this.type = type;
         this.genre = genre;
+        this.date = LocalDate.now();
+        this.duedate = duedate;
+        this.score = score;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public LocalDate getDuedate() {
+        return duedate;
+    }
+
+    public void setDuedate(LocalDate duedate) {
+        this.duedate = duedate;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public String getGenre() {
