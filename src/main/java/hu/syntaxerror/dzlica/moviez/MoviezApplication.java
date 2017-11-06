@@ -2,6 +2,7 @@ package hu.syntaxerror.dzlica.moviez;
 
 import hu.syntaxerror.dzlica.moviez.model.Moviez;
 import hu.syntaxerror.dzlica.moviez.repositories.MoviezRepo;
+import hu.syntaxerror.dzlica.moviez.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +13,9 @@ public class MoviezApplication implements CommandLineRunner {
 
 	@Autowired
     MoviezRepo moviezRepo;
+
+	@Autowired
+    UserRepo userRepo;
 
 
     public static void main(String[] args) {

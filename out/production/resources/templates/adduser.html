@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Adding user</title>
+</head>
+<body>
+<form th:action="@{/user/add}" th:object="${adduser}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <input type="text" th:field="*{name}" th:value="${name}" />
+    <button type="submit" value="Submit">Submit</button>
+</form>
+</body>
+</html>
