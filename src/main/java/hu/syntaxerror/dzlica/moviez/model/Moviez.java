@@ -1,13 +1,12 @@
 package hu.syntaxerror.dzlica.moviez.model;
 
+import hu.syntaxerror.dzlica.moviez.service.DateProvider;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 
 import java.time.LocalDate;
 import java.util.Date;
-
-import static javax.persistence.TemporalType.DATE;
 
 @Entity
 public class Moviez {
@@ -22,12 +21,16 @@ public class Moviez {
     int score;
 
     LocalDate date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate duedate;
 
     public Moviez() {
+        this.date = LocalDate.now();
+        this.duedate = duedate;
     }
 
     public Moviez(String title, LocalDate date) {
+        this.date = LocalDate.now();
 
     }
 
@@ -37,6 +40,7 @@ public class Moviez {
         this.watched = watched;
         this.type = type;
         this.genre = genre;
+        this.date = LocalDate.now();
     }
 
     public Moviez(String title, String type, String genre, boolean watched, LocalDate date, LocalDate duedate, int score) {
@@ -47,6 +51,11 @@ public class Moviez {
         this.date = LocalDate.now();
         this.duedate = duedate;
         this.score = score;
+    }
+
+    public Moviez(LocalDate duedate) {
+        this.duedate = duedate;
+        this.date = LocalDate.now();
     }
 
     public int getScore() {

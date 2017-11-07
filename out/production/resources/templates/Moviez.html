@@ -31,6 +31,8 @@
             <th>Genre</th>
             <th>Type</th>
             <th>Watched</th>
+            <th>Date</th>
+            <th>When you wathced it</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -44,6 +46,8 @@
             <td th:text="${movie.type}"></td>
             <td th:if="${movie.isWatched()}">Yes</td>
             <td th:unless="${movie.isWatched()}">No</td>
+            <td th:text="${movie.date}"></td>
+            <td th:text="${movie.duedate}"></td>
             <td><a th:href="@{/moviez/{id}/edit(id=${movie.id})}" >Edit</a></td>
             <td><a th:href="@{/moviez/{id}/delete(id=${movie.id})}" >Delete</a></td>
         </tr>

@@ -38,7 +38,6 @@ public class MoviezController {
             model.addAttribute("moviez", moviezRepo.findAllByTitleIsLikeOrGenreIsLikeOrTypeIsLike("%" + search + "%", "%" + search + "%", "%" + search + "%"));
         }
 
-
         return "moviez";
     }
 
@@ -51,7 +50,7 @@ public class MoviezController {
     }
 
     @PostMapping("/add")
-    public String postTitle(@ModelAttribute Moviez moviez, Model model) {
+    public String postTitle(@ModelAttribute Moviez moviez, Model model, @RequestParam("duedate") String duedate) {
         moviezRepo.save(moviez);
         model.addAttribute("moviez", moviezRepo.findAll());
         return "moviez";
