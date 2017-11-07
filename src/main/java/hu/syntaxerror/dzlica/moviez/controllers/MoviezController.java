@@ -65,7 +65,7 @@ public class MoviezController {
     }
 
     @PostMapping("/{id}/edit")
-    public String editPost(@ModelAttribute Moviez moviez) {
+    public String editPost(@ModelAttribute Moviez moviez, @RequestParam("duedate") String duedate) {
         moviezRepo.save(moviez);
         return "redirect:/moviez/list";
     }
