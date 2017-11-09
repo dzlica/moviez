@@ -15,18 +15,23 @@
 <form th:action="@{/moviez/{id}/edit(id=${editmovie.id})}" th:object="${editmovie}" method="post">
     <input type="hidden" th:field="*{id}" />
     <input type="text" th:field="*{title}" th:value="${title}" />
+    <p></p>
     <i>Watched:</i>
     <input type="checkbox" th:field="*{watched}" />
+    <p></p>
     <input type="date" th:value="*{duedate}" name="duedate" />
+    <p></p>
     <select id="genre" name="genre">
         <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"></option>
     </select>
     <select id="type" name="type">
         <option th:each="type : ${types}" th:value="${type}" th:text="${type}"></option>
     </select>
+    <p></p>
     <select id="editmovie.user.id" th:field="*{users}">
         <option th:each="a : ${users}" th:value="${a.id}" th:text="${a.name}"></option>
     </select>
+    <p></p>
     <button type="submit" value="Submit" class="btn btn-sm btn-success">Submit</button>
 </form>
 <p></p>

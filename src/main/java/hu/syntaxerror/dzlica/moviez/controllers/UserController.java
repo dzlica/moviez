@@ -15,6 +15,9 @@ public class UserController {
     @Autowired
     UserRepo userRepo;
 
+    @Autowired
+    MoviezRepo moviezRepo;
+
     @RequestMapping({"/", "/list"})
     public String userList(Model model) {
         model.addAttribute("users", userRepo.findAll());
@@ -49,6 +52,12 @@ public class UserController {
     public String postUser(@ModelAttribute User user, Model model) {
         userRepo.save(user);
         model.addAttribute("users", userRepo.findAll());
+        return "user";
+    }
+
+    @RequestMapping("/{id}")
+    public String userlist(Model model, @PathVariable long id) {
+        model.addAttribute("listmoviez", moviezRepo.findAllByUsersId(id));
         return "user";
     }
 
