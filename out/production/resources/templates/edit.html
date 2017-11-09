@@ -24,6 +24,9 @@
     <select id="type" name="type">
         <option th:each="type : ${types}" th:value="${type}" th:text="${type}"></option>
     </select>
+    <select id="editmovie.user.id" th:field="*{users}">
+        <option th:each="a : ${users}" th:value="${a.id}" th:text="${a.name}"></option>
+    </select>
     <button type="submit" value="Submit" class="btn btn-sm btn-success">Submit</button>
 </form>
 <p></p>

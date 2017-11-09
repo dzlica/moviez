@@ -1,12 +1,9 @@
 package hu.syntaxerror.dzlica.moviez.model;
 
-import hu.syntaxerror.dzlica.moviez.service.DateProvider;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class Moviez {
@@ -23,6 +20,19 @@ public class Moviez {
     LocalDate date;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate duedate;
+
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable
+    private Set<User> users;
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 
     public Moviez() {
         this.date = LocalDate.now();

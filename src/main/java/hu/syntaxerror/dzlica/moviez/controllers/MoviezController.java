@@ -3,6 +3,7 @@ package hu.syntaxerror.dzlica.moviez.controllers;
 import hu.syntaxerror.dzlica.moviez.model.Type;
 import hu.syntaxerror.dzlica.moviez.model.Moviez;
 import hu.syntaxerror.dzlica.moviez.repositories.MoviezRepo;
+import hu.syntaxerror.dzlica.moviez.repositories.UserRepo;
 import hu.syntaxerror.dzlica.moviez.service.DateProvider;
 import hu.syntaxerror.dzlica.moviez.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class MoviezController {
 
     @Autowired
     MoviezRepo moviezRepo;
+
+    @Autowired
+    UserRepo userRepo;
 
     @Autowired
     DateProvider dateProvider;
@@ -59,6 +63,7 @@ public class MoviezController {
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable long id) {
         model.addAttribute("editmovie", moviezRepo.findOne(id));
+        model.addAttribute("users", userRepo.findAll());
         model.addAttribute("genres", Type.genres);
         model.addAttribute("types", Type.types);
         return "/edit";

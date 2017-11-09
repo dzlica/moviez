@@ -1,9 +1,7 @@
 package hu.syntaxerror.dzlica.moviez.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -13,6 +11,17 @@ public class User {
     long id;
     String name;
     String password;
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Moviez> moviezs;
+
+    public Set<Moviez> getMoviezs() {
+        return moviezs;
+    }
+
+    public void setMoviezs(Set<Moviez> moviezs) {
+        this.moviezs = moviezs;
+    }
 
     public User(String name, String password) {
         this.name = name;
