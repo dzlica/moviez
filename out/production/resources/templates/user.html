@@ -13,7 +13,8 @@
 <a th:href="@{/user/add}" class="btn btn-warning" th:text="'Add user'" />
 <p></p>
 <h1>List of users</h1>
-<table class="table table-striped">
+<div>
+<table class="table table-striped" >
     <tr>
         <th>Id</th>
         <th>Name</th>
@@ -27,5 +28,6 @@
         <td><a th:href="@{/user/{id}/delete(id=${user.id})}" class="btn btn-xs btn-danger" >Delete</a></td>
     </tr>
 </table>
+</div>
 </body>
 </html>

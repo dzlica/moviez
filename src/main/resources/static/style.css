@@ -2,4 +2,11 @@ body {
     font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
     background-color: mintcream;
     margin: 30px;
+    background-image: url("movies.jpg");
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+
+div {
+    width: 680px;
 }
