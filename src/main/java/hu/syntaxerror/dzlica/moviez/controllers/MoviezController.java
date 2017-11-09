@@ -2,6 +2,7 @@ package hu.syntaxerror.dzlica.moviez.controllers;
 
 import hu.syntaxerror.dzlica.moviez.model.Type;
 import hu.syntaxerror.dzlica.moviez.model.Moviez;
+import hu.syntaxerror.dzlica.moviez.model.User;
 import hu.syntaxerror.dzlica.moviez.repositories.MoviezRepo;
 import hu.syntaxerror.dzlica.moviez.repositories.UserRepo;
 import hu.syntaxerror.dzlica.moviez.service.DateProvider;
@@ -73,6 +74,15 @@ public class MoviezController {
     public String editPost(@ModelAttribute Moviez moviez, @RequestParam("duedate") String duedate) {
         moviezRepo.save(moviez);
         return "redirect:/moviez/list";
+    }
+
+    @PostMapping("/{id}/addtofilm")
+    public String addToFilm(@PathVariable long id, @RequestParam("userid") long userid) {
+        Moviez moviez = moviezRepo.findOne(id);
+        User user = userRepo.findOne(userid);
+        moviez.addUser(user);
+        moviezRepo.save(moviez);
+        return "redirect:/{id}/edit";
     }
 
     @RequestMapping("/{id}/delete")

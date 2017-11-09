@@ -28,13 +28,20 @@
         <option th:each="type : ${types}" th:value="${type}" th:text="${type}"></option>
     </select>
     <p></p>
-    <select id="editmovie.user.id" th:field="*{users}">
-        <option th:each="a : ${users}" th:value="${a.id}" th:text="${a.name}"></option>
-    </select>
-    <p></p>
     <button type="submit" value="Submit" class="btn btn-sm btn-success">Submit</button>
 </form>
 <p></p>
+<form th:action="@{/moviez/{id}/addtofilm(id=${editmovie.id})}" method="post">
+    <select id="userid" name="userid">
+        <option th:each="a : ${users}" th:value="${a.id}" th:text="${a.name}"></option>
+    </select>
+    <button type="submit" value="Submit" class="btn btn-sm btn-success">Add</button>
+</form>
+<p></p>
+
+<table>
+    <td th:each=" x: ${editmovie.getUsers()}" th:text="${x.name}"></td>
+</table>
 <a th:href="@{/moviez/list}" th:text="'Cancel'" />
 </body>
 </html>

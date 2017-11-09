@@ -57,8 +57,8 @@ public class UserController {
 
     @RequestMapping("/{id}")
     public String userlist(Model model, @PathVariable long id) {
-        model.addAttribute("listmoviez", moviezRepo.findAllByUsersId(id));
-        return "user";
+        model.addAttribute("moviez", moviezRepo.findAllByUsersId(id));
+        return "moviez";
     }
 
 
