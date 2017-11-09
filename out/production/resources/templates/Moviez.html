@@ -2,27 +2,29 @@
 <html lang="en" xmlns:th="http://www.thyemleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>List of Shows</title>
+    <title>The Oracle Movie Database</title>
+    <link href="/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/style.css" rel="stylesheet"/>
 </head>
 <body>
-<a th:href="@{/moviez/list}" th:text="'Home'" />
+<a th:href="@{/moviez/list}" class="btn btn-lg btn-danger" th:text="'Home'" />
+<a th:href="@{/user/list}" class="btn btn-warning" th:text="'Users'" />
+<a th:href="@{/moviez/add}" class="btn btn-warning" th:text="'Add titles'" />
+<a th:href="@{/user/add}" class="btn btn-warning" th:text="'Add user'" />
 <p></p>
-<a th:href="@{/user/list}" th:text="'Users'" />
+<a th:href="@{/moviez/?isWatched=true}" class="btn btn-xs btn-success" th:text="'Watched'" />
+<a th:href="@{/moviez/?search=movie}" class="btn btn-xs btn-success" th:text="'Movies'" />
+<a th:href="@{/moviez/?search=series}" class="btn btn-xs btn-success" th:text="'Series'" />
 <p></p>
-<a th:href="@{/moviez/add}" th:text="'Add titles'" />
-<a th:href="@{/user/add}" th:text="'Add user'" />
-<p></p>
-<a th:href="@{/moviez/?isWatched=true}" th:text="'Watched'" />
-<a th:href="@{/moviez/?search=movie}" th:text="'Movies'" />
-<a th:href="@{/moviez/?search=serial}" th:text="'Serials'" />
-
+<div class="input-group col-md-12">
 <form th:action="@{/moviez/list}" th:object="${search}" method="get">
-    <input type="search" name="search" />
+    <input type="search" name="search" placeholder="Search"/>
     <button type="submit" value="Submit">Search</button>
 </form>
+</div>
 <p></p>
-    <h1>List of Shows</h1>
-    <table>
+    <h1>The Oracle Movie Database</h1>
+    <table class="table table-striped">
         <tr>
             <th>Id</th>
             <th>Score</th>
@@ -46,8 +48,8 @@
             <td th:if="${movie.isWatched()}">Yes</td>
             <td th:unless="${movie.isWatched()}">No</td>
             <td th:text="${movie.duedate}"></td>
-            <td><a th:href="@{/moviez/{id}/edit(id=${movie.id})}" >Edit</a></td>
-            <td><a th:href="@{/moviez/{id}/delete(id=${movie.id})}" >Delete</a></td>
+            <td><a th:href="@{/moviez/{id}/edit(id=${movie.id})}" class="btn btn-xs btn-info" >Edit</a></td>
+            <td><a th:href="@{/moviez/{id}/delete(id=${movie.id})}" class="btn btn-xs btn-danger" >Delete</a></td>
         </tr>
     </table>
 

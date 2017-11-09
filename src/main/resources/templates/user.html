@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <title>Listing users</title>
+    <link href="/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/style.css" rel="stylesheet"/>
 </head>
 <body>
-<a th:href="@{/moviez/list}" th:text="'Home'" />
+<a th:href="@{/moviez/list}" class="btn btn-lg btn-danger" th:text="'Home'" />
+<a th:href="@{/user/list}" class="btn btn-warning" th:text="'Users'" />
+<a th:href="@{/moviez/add}" class="btn btn-warning" th:text="'Add titles'" />
+<a th:href="@{/user/add}" class="btn btn-warning" th:text="'Add user'" />
 <p></p>
-
-<table>
+<h1>List of users</h1>
+<table class="table table-striped">
     <tr>
         <th>Id</th>
         <th>Name</th>
@@ -18,8 +23,8 @@
     <tr th:each="user:${users}">
         <td th:text="${user.id}"></td>
         <td th:text="${user.name}"></td>
-        <td><a th:href="@{/user/{id}/edit(id=${user.id})}" >Edit</a></td>
-        <td><a th:href="@{/user/{id}/delete(id=${user.id})}" >Delete</a></td>
+        <td><a th:href="@{/user/{id}/edit(id=${user.id})}" class="btn btn-xs btn-info" >Edit</a></td>
+        <td><a th:href="@{/user/{id}/delete(id=${user.id})}" class="btn btn-xs btn-danger" >Delete</a></td>
     </tr>
 </table>
 </body>

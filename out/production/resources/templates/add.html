@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8" />
     <title>Add new title</title>
+    <link href="/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/style.css" rel="stylesheet"/>
 </head>
 <body>
+<a th:href="@{/moviez/list}" class="btn btn-lg btn-danger" th:text="'Home'" />
+<a th:href="@{/user/list}" class="btn btn-warning" th:text="'Users'" />
+<a th:href="@{/moviez/add}" class="btn btn-warning" th:text="'Add titles'" />
+<a th:href="@{/user/add}" class="btn btn-warning" th:text="'Add user'" />
+<p></p>
+<h3>Add new title</h3>
 <form th:action="@{/moviez/add}" th:object="${addtitle}" method="post">
     <input type="hidden" th:field="*{id}" />
     <input type="text" th:field="*{title}" th:value="${title}" th:placeholder="Title"/>
-    <input type="checkbox" th:field="*{watched}" />
-    <input type="date" th:value="*{duedate}" name="duedate" />
+    <p></p>
+    <input type="checkbox" th:text="'    Did you watch it?'" th:field="*{watched}" />
+    <p></p>
+    <input type="date" th:text="'Select date'" th:value="*{duedate}" name="duedate"/>
+    <p></p>
     <select id="genre" name="genre">
         <option value="NONE">--- Select Genre ---</option>
         <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"></option>
@@ -18,7 +29,8 @@
         <option value="NONE">--- Select Type ---</option>
         <option th:each="type : ${types}" th:value="${type}" th:text="${type}"></option>
     </select>
-    <button type="submit" value="Submit">Submit</button>
+    <p></p>
+    <button type="submit" value="Submit" class="btn btn-sm btn-success">Submit</button>
 </form>
 <p></p>
 <a th:href="@{/moviez/list}" th:text="'Cancel'" />

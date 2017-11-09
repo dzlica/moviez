@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <title>Ediging user</title>
+    <link href="/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/style.css" rel="stylesheet"/>
 </head>
 <body>
+<a th:href="@{/moviez/list}" class="btn btn-lg btn-danger" th:text="'Home'" />
+<a th:href="@{/user/list}" class="btn btn-warning" th:text="'Users'" />
+<a th:href="@{/moviez/add}" class="btn btn-warning" th:text="'Add titles'" />
+<a th:href="@{/user/add}" class="btn btn-warning" th:text="'Add user'" />
+<h1>Edit user info</h1>
 <form th:action="@{/user/{id}/edit(id=${edituser.id})}" th:object="${edituser}" method="post">
     <input type="hidden" th:field="*{id}" />
     <input type="text" th:field="*{name}" th:value="${name}" />
-    <button type="submit" value="Submit">Submit</button>
+    <button type="submit" value="Submit" class="btn btn-sm btn-success">Submit</button>
 </form>
 </body>
 </html>
